@@ -1,0 +1,131 @@
+# These are the default configuration options that will be used if they aren't overridden
+# in your postal.yml configuration file. No changes should be made to this file for
+# your installation.
+
+# You can refer to this for a complete listing all available configuration options.
+
+web:
+  host: postal.example.com
+  protocol: https
+
+general:
+  use_ip_pools: false
+  exception_url:
+  maximum_delivery_attempts: 18
+  maximum_hold_expiry_days: 7
+  suppression_list_removal_delay: 30
+  use_local_ns_for_domains: false
+  default_spam_threshold: 5.0
+  default_spam_failure_threshold: 20.0
+  use_resent_sender_header: true
+
+web_server:
+  bind_address: 0.0.0.0
+  port: 5000
+  max_threads: 5
+
+main_db:
+  host: <IP-address-of-db-server>
+  port: 3306
+  username: postal
+  password:
+  database: postal
+  pool_size: 5
+
+logging:
+  stdout: false
+  root: # Automatically determined based on config root
+  max_log_file_size: 20
+  max_log_files: 10
+  graylog:
+    host: <IP-address-of-graylog-server>
+    port: 12201
+
+message_db:
+  host: <IP-address-of-db-server>
+  port: 3306
+  username: postal
+  password:
+  prefix: postal
+
+rabbitmq:
+  host: <IP-address-of-rmq-server>
+  port: 5672
+  tls: false
+  verify_peer: true
+  tls_ca_certificates:
+    - /etc/ssl/certs/ca-certificates.crt
+  username: postal
+  password:
+  vhost: /postal
+
+workers:
+  quantity: 1
+  threads: 4
+
+smtp_server:
+  port: 25
+  bind_address: '::'
+  # to enable SMTPS we'll need to generate a certificate pair, we can use an acme script or
+  tls_enabled: false
+  tls_certificate_path: # Defaults to config/smtp.cert
+  tls_private_key_path: # Defaults to config/smtp.key
+  tls_ciphers:
+  ssl_version: SSLv23
+  proxy_protocol: false
+  log_connect: true
+  strip_received_headers: false
+  max_message_size: 14 # size in Megabytes
+
+smtp_relays:
+  -
+    hostname:
+    port: 25
+    ssl_mode: Auto
+
+dns:
+  mx_records:
+    - mx.mail.example.com
+  smtp_server_hostname: smtp.example.com
+  spf_include: spf.mail.example.com
+  return_path: rp.mail.example.com
+  route_domain: routes.mail.example.com
+  track_domain: track.mail.example.com
+  helo_hostname: # By default, this will be the same as the `smtp_server_hostname`
+  dkim_identifier: postal # You're welcome to change this value to whatever you'd like, I don't like to leak internal software publicly if I can avoid it.
+  domain_verify_prefix: mail-verification
+  custom_return_path_prefix: mlrp
+
+smtp:
+  host: 127.0.0.1 # Either localhost, or whatever SMTP host you'd like to use, this is for the web server so in this situation it would be something like the following. host:<smtp_server_hostname>
+  port: 25
+  username: # Complete when Postal is running and you can
+  password: # generate the credentials within the interface.
+  from_name: Postal
+  from_address: postal@yourdomain.com
+
+rails:
+  environment: production
+  secret_key:
+
+rspamd:
+  enabled: false
+  host: 127.0.0.1
+  port: 11334
+  ssl: false
+  password: null
+  flags: null
+
+spamd:
+  enabled: false
+  host: 127.0.0.1
+  port: 783
+
+clamav:
+  enabled: false
+  host: 127.0.0.1
+  port: 2000
+
+smtp_client:
+  open_timeout: 30
+  read_timeout: 60

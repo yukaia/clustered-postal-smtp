@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb:10.11
+    restart: always
+    ports:
+      - "${HOST_IP}:3306:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - mariadb-tmp:/tmp
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+
+  rabitmq:
+    image: rabbitmq:3.12.1
+    restart: always
+    ports:
+      - "${HOST_IP}:5672:5672"
+    volumes:
+      - rabitmq-data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER
+      - RABBITMQ_DEFAULT_PASS
+      - RABBITMQ_DEFAULT_VHOST
+
+volumes:
+  mariadb-data:
+    driver: local
+  mariadb-tmp:
+    driver: local
+  rabitmq-data:
+    driver: local
