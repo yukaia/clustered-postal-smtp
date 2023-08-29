@@ -10,13 +10,23 @@ In here you'll find two `docker-compose.yml` files, one is for the postal applic
 
 ## Configuration
 
+First we start with the DB and RMQ storage for the app, then we'll move to getting the postal Web, Cron, Queuer, and Runner containers up and running, you're welcome to run them on the same host as the DB and SQL containers, I run them on a separate box, and then finally on a separate server we'll get our first SMTP and Worker containers running, we can run as many of these as we need/like.
+
+### Postal DB and RMQ Server.
+
 First things first we'll want to get our database and rmq servers configured and ready to bring up. For the time being I'm choosing to run the `mariadb:lts` container and `rabbitmq:management`. 
 
-You'll wan to rename `docker-compose.yml-db-rmq-sample` to `docker-compose.yml` and `.env_db_rmq` to `.env`. Don't touch the postal .env and docker-compose samples.
+You'll wan to rename `docker-compose.yml-db_rmq-sample` to `docker-compose.yml` and `.env_db_rmq` to `.env`. Don't touch the postal .env and docker-compose samples.
 
 Edit the .env file, define the IP address you want it to listen on, or you can use `0.0.0.0` to have it listen on all available addresses.
 
 Create your db and rqm usernames and passwords, I'd recommend leaving the RMQ VHOST set to postal unless you have a reason to change it.
+
+#### Postal Web, Queue, Cron, and Runner.
+
+You'll wan to rename `docker-compose.yml-postal-sample` to `docker-compose.yml`. Don't touch the db_rmq .env and docker-compose samples.
+
+#### Postal SMTP and Worker.
 
 ----
 
