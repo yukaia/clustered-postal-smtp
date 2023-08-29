@@ -10,7 +10,13 @@ In here you'll find two `docker-compose.yml` files, one is for the postal applic
 
 ## Configuration
 
-First things first we'll want to get our database and rmq servers configured and ready to bring up.
+First things first we'll want to get our database and rmq servers configured and ready to bring up. For the time being I'm choosing to run the `mariadb:lts` container and `rabbitmq:management`. 
+
+You'll wan to rename `docker-compose.yml-db-rmq-sample` to `docker-compose.yml` and `.env_db_rmq` to `.env`. Don't touch the postal .env and docker-compose samples.
+
+Edit the .env file, define the IP address you want it to listen on, or you can use `0.0.0.0` to have it listen on all available addresses.
+
+Create your db and rqm usernames and passwords, I'd recommend leaving the RMQ VHOST set to postal unless you have a reason to change it.
 
 ----
 
