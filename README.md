@@ -67,3 +67,10 @@ After you've finished editing the `postal.yml`, `.env` and `docker-compose.yml` 
         run-docker-compose "run runner postal test-app-smtp"
         ;;
 ```
+
+
+----
+
+## Postal Config
+
+You can find a walkthrough of the postal config in [config/postal_config_outline.md](config/postal_config_outline.md)
