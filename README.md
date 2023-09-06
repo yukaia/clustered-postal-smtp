@@ -74,3 +74,5 @@ After you've finished editing the `postal.yml`, `.env` and `docker-compose.yml` 
 ## Postal Config
 
 You can find a walkthrough of the postal config in [config/postal_config_outline.md](config/postal_config_outline.md)
+
+In order to simplify things you'll want to edit one of these `postal.yml` configs and then copy it to all of your servers, it does lead to some problems managing any changes you might make in your environment, however I make all changes on one box, then manually propagate them to the rest of my containers.
