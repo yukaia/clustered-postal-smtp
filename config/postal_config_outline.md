@@ -1,6 +1,6 @@
 # Postal Config Outline
 
-The settings for my production Postal deployment.
+The settings for my production Postal deployment. This is only intended to act as a guide/explanation for settings. You'll want to make the changes in the actual `postal.yml` configuration file that's in the directory with this.
 
 ## Web Server Settings.
 
